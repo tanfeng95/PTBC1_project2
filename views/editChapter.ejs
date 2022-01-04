@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>list of books</title>
+
+  <style>
+    .image_size {
+      width: 200px;
+      height: 200px;
+      padding: 0.25rem;
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 0.25rem;
+      max-width: 100%;
+    }
+
+    .over {
+      
+    }
+
+    .card-text {
+      font-size: 19px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+        .submit {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <%- include('navBar'); -%>
+      <div class="row over d-flex justify-content-center">
+        <% for(var i=0; i<result.length; i++) {%>
+          <div class="card m-2 " style="width: 12rem;">
+            <img class="card-img-top image_size" src="/<%= result[i].photo %> " alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%=result[i].book_title%>
+              </h5>
+              <p class="card-text"> Author : <%=result[i].author%>
+              </p>
+              <p class="card-text">
+                <%=result[i].chapters%> Chapters
+              </p>
+              <form action="/editBook/<%=result[i].id%>/edit?_method=PUT" method="POST">
+                <p class="card-text">
+                  <label class="form-label" for="current_chapter">Current Chapter</label>
+                  <input class="form-control" name="book_id" type="hidden" value="<%= result[i].book_id  %> ">
+                  <input class="form-control" type="number" id="current_chapter" name="current_chapter"
+                    value="<%=result[i].current_page_chapter%>" /><br />
+                </p>
+                <button class="btn btn-primary view-btn submit">Update</button>
+
+              </form>
+
+
+            </div>
+          </div>
+          <% } %>
+            <!-- app.put('/editBook/:id/edit',putBookStatus) -->
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
