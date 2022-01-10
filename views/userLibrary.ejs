@@ -63,9 +63,9 @@
             </div>
             <div class="d-flex flex-column">
               <!-- <a href="book/<%=result[i].id%>" class="btn btn-primary view-btn">View</a> -->
-              <a href="editBook/<%=result[i].id%>/edit" class="btn btn-secondary view-btn">Edit</a>
+              <a href="editBook/<%=result[i].id%>/edit" class="btn btn-secondary view-btn fa fa-pencil">Edit</a>
               <form action="deleteBook/<%=result[i].book_id%>/delete?_method=DELETE" method="POST" class="">
-                <button class="btn btn-danger submit" type="submit">Delete</button>
+                <button class="btn btn-danger submit fa fa-trash" type="submit">Delete</button>
               </form>
             </div>
 

@@ -16,13 +16,12 @@
     .book {
       display: flex;
       justify-content: center;
-
     }
 
     .genre {
-      color: #fff;
+      color: black;
       border-color: #0d6efd;
-      background-color: #0d6efd;
+      background-color: #AEFEFF;
       display: inline-block;
       font-weight: 400;
       border: 1px solid transparent;
@@ -43,17 +42,34 @@
     .add-to-library {
       display: flex;
     }
+
+    @media only screen and (max-width: 600px) {
+      .book {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .novel-info {
+        max-width: 100%;
+      }
+
+      .add-to-library {
+        display: flex;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="container p-2 m-2">
+  <div class="container">
     <%- include('navBar'); -%>
       <div class='book p-2 m2'>
         <div class="fixed-img p-2 m-2">
           <img class="img-fluid" src="/<%=result[0].photo%>">
         </div>
-        <div class="novel-info ">
+        <div class="novel-info p-2 m-2 ">
           <div class="main-header">
             <h1 class="p-2 m-2">
               <%=result[0].book_title%>
@@ -75,7 +91,7 @@
             </div>
             <div class="chapters p-2 m-2">
               <span class=""><strong>URL :</strong>
-                <a class="btn btn-primary view-btn" href="<%= result[0].book_url %>" target="_blank">Go to website</a>
+                <a class="btn btn-dark view-btn" href="<%= result[0].book_url %>" target="_blank">Go to website</a>
               </span>
             </div>
           </div>
@@ -90,16 +106,16 @@
             </div>
           </div>
           <div class="add-to-library p-2 m-2">
-            <div class="d-flex align-self-center ">
+            <div class="d-flex">
               <form action='/addToUserLibrary' method="POST" class="post-form ">
                 <span><b>Add: </b></span>
                 <input class="form-control" type="hidden" name='book_id' value='<%=result[0].id%>'>
-                <button type="submit" class="btn btn-primary "> Add To Library</button>
+                <button type="submit" class="btn btn-secondary fa fa-plus"> Add To Library</button>
               </form>
               <div class='px-2'>
-                <a href="/book/<%=result[0].id%>/comment " class="btn btn-primary view-btn">Add Comments</a>
+                <a href="/book/<%=result[0].id%>/comment " class="btn btn-secondary view-btn fa fa-plus">Add
+                  Comments</a>
               </div>
-
             </div>
           </div>
         </div>
@@ -116,12 +132,18 @@
         <span>
           <h4>Comments :</h4>
           <hr>
-
+          <% for(var i=0; i<comments.length; i++) {%>
+            <Span>
+              Username: <%= comments[i].username %>
+                <br>
+                Comment : <%= comments[i].comments %>
+            </Span>
+            <br>
+            <br>
+            <% } %>
         </span>
       </div>
   </div>
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
