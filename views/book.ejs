@@ -107,13 +107,13 @@
           </div>
           <div class="add-to-library p-2 m-2">
             <div class="d-flex">
-              <form action='/addToUserLibrary' method="POST" class="post-form ">
+              <form action='/library/addToUserLibrary' method="POST" class="post-form ">
                 <span><b>Add: </b></span>
                 <input class="form-control" type="hidden" name='book_id' value='<%=result[0].id%>'>
                 <button type="submit" class="btn btn-secondary fa fa-plus"> Add To Library</button>
               </form>
               <div class='px-2'>
-                <a href="/book/<%=result[0].id%>/comment " class="btn btn-secondary view-btn fa fa-plus">Add
+                <a href="/library/<%=result[0].id%>/comment " class="btn btn-secondary view-btn fa fa-plus">Add
                   Comments</a>
               </div>
             </div>

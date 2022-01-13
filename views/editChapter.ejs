@@ -53,7 +53,7 @@
               <p class="card-text">
                 <%=result[i].chapters%> Chapters
               </p>
-              <form action="/editBook/<%=result[i].id%>/edit?_method=PUT" method="POST">
+              <form action="/library/editBook/<%=result[i].id%>/edit?_method=PUT" method="POST">
                 <p class="card-text">
                   <label class="form-label" for="current_chapter">Current Chapter</label>
                   <input class="form-control" name="book_id" type="hidden" value="<%= result[i].book_id  %> ">

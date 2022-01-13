@@ -14,12 +14,17 @@
 </head>
 <style>
   .post-form {
-    width: 50%;
+    width: 60%;
     max-width: 330vw;
     padding: 15px;
     margin: auto;
   }
+
+  .input {
+    height: 20vh;
+  }
 </style>
+
 
 <body>
   <div class="container ">
@@ -34,17 +39,40 @@
               <div class='d-flex justify-content-between'>
                 <h1>Add New book</h1>
               </div>
-              <form action="/addbook" method="POST" class='post-form' enctype="multipart/form-data">
+              <form action="/library/addbook" method="POST" class='post-form was-validated'
+                enctype="multipart/form-data">
 
-                <label class='form-label' for="fname">Book Title :</label><br />
-                <input class='form-control' type="text" name="bookTitle" /><br />
+                <div class="mb-3 mt-3">
+                  <label class='form-label' for="fname">Book Title :</label><br />
+                  <input class='form-control' id="bookTitle" type="text" name="bookTitle" required />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label class='form-label' for="lname">Author :</label><br />
+                  <input class='form-control' id="author" type="text" name="author" required />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label class='form-label' for="uname">Chapters:</label><br />
+                  <input class='form-control' id="chapters" type="number" name="chapters" required />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="mb-3 mt-3">
+                  <label class='form-label' for="lname">Book Url :</label><br />
+                  <input class='form-control ' id="bookUrl" type="text" name="bookUrl" required />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
 
-                <label class='form-label' for="lname">Author :</label><br />
-                <input class='form-control' type="text" name="author" /><br /><br />
-
-                <label class='form-label' for="lname">Chapters:</label><br />
-                <input class='form-control' type="number" name="chapters" /><br /><br />
-
+                <div class="mb-3 mt-3">
+                  <label class='form-label' for="lname">Photo:</label><br />
+                  <input class='form-control' id="photo" type="file" name="photo" required />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
                 <label class='form-label' for="fname">Book Type :</label><br />
                 <select name="bookType" class="form-select">
                   <% bookTypes.forEach((bookType)=> { %>
@@ -53,24 +81,33 @@
                     </option>
                     <% }); %>
                 </select><br />
+                <div class="mb-3 mt-3">
+                  <label class='form-label' for="fname">Genres:</label><br />
+                  <% genres.forEach((genre)=> { %>
+                    <label>
+                      <%= genre.genres_name %>
+                    </label>
+                    <input type="checkbox" name="genre_id" value="<%= genre.id %>" />
+                    <% }); %>
+                </div>
 
-                <label class='form-label' for="fname">Genres:</label><br />
-                <% genres.forEach((genre)=> { %>
-                  <label>
-                    <%= genre.genres_name %>
-                  </label>
-                  <input type="checkbox" name="genre_id" value="<%= genre.id %>" />
-                  <% }); %> <br /><br />
+                <label class='form-label' for="lname">Summary:</label><br />
+                <textarea class='form-control input' type="text" name="summary"></textarea><br>
 
-                    <label class='form-label' for="lname">Book Url :</label><br />
-                    <input class='form-control' type="text" name="bookUrl" /><br /><br />
-                    <label class='form-label' for="lname">Photo:</label><br />
-                    <input class='form-control' type="file" name="photo" /><br /><br />
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </form>
-
   </div>
+  <script>
+    $(document).ready(function () {
+      $("form").submit(function () {
+        if ($('input:checkbox').filter(':checked').length < 1) {
+          alert("Please Check at least one Check Box");
+          return false;
+        }
+      });
+    });
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
