@@ -1,0 +1,134 @@
+.post-form {
+  width: 60%;
+  max-width: 330vw;
+  padding: 15px;
+  margin: auto;
+}
+
+.input {
+  height: 25vh;
+}
+
+.book {
+  display: flex;
+  justify-content: center;
+}
+
+.genre {
+  color: black;
+  border-color: #0d6efd;
+  background-color: #aefeff;
+  display: inline-block;
+  font-weight: 400;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  margin: 0.2rem;
+}
+
+body{
+  background-color: #C2CAD0;
+}
+
+.fixed-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.novel-info {
+  max-width: 75%;
+}
+
+.add-to-library {
+  display: flex;
+}
+.book-button {
+  height: 3rem;
+}
+@media only screen and (max-width: 600px) {
+  .book {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .novel-info {
+    max-width: 100%;
+  }
+
+  .add-to-library {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.image_size {
+  width: 200px;
+  height: 200px;
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  max-width: 100%;
+}
+.card-text {
+  font-size: 19px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.submit {
+  width: 100%;
+}
+
+.form-inline {
+  display: flex;
+  width: 80%;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  background-color: #fff;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.wrongInput {
+  visibility: hidden;
+}
+
+.content {
+  align-items: center;
+}
+
+.login {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  background-color: #fff;
+}

@@ -11,9 +11,10 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <script src="https://use.fontawesome.com/b6d07f1947.js"></script>
+  <link type="text/css" rel="stylesheet" href="/css/styles.css">
   <title>list of books</title>
 
-  <style>
+  <!-- <style>
     .image_size {
       width: 200px;
       height: 200px;
@@ -23,11 +24,6 @@
       border-radius: 0.25rem;
       max-width: 100%;
     }
-
-    .over {
-      
-    }
-
     .card-text {
       font-size: 19px;
       text-overflow: ellipsis;
@@ -44,14 +40,14 @@
       display: flex;
       justify-content: center;
     }
-  </style>
+  </style> -->
 </head>
 
 <body>
   <div class="container">
     <%- include('navBar',{username : `${username}`}); -%>
       <div class="search-bar">
-        <form class="form-inline" method="GET" action="/" >
+        <form class="form-inline" method="GET" action="/">
           <input class='form-control' name="q" aria-label="Search" type="search" />
           <button class=" btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
