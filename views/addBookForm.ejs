@@ -1,107 +1,76 @@
-<!doctype html>
-<html lang="en">
+<%- include('header', {title: `Add Book`}); -%>
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <title>Add Book</title>
-  <link type="text/css" rel="stylesheet" href="/css/styles.css">
-
-</head>
-<!-- <style>
-  .post-form {
-    width: 60%;
-    max-width: 330vw;
-    padding: 15px;
-    margin: auto;
-  }
-
-  .input {
-    height: 20vh;
-  }
-</style> -->
-
-
-<body>
-  <div class="container ">
-    <%- include('navBar'); -%>
-      <% if(typeof alert !='undefined' ) { %>
-        <% alert.forEach(function(error) { %>
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <%= error.msg %>
-          </div>
-          <% }) %>
-            <% } %>
-              <div class='d-flex justify-content-between'>
-                <h1>Add New book</h1>
-              </div>
-              <form action="/library/addbook" method="POST" class='post-form was-validated'
-                enctype="multipart/form-data">
-
-                <div class="mb-3 mt-3">
-                  <label class='form-label' for="fname">Book Title :</label><br />
-                  <input class='form-control' id="bookTitle" type="text" name="bookTitle" required />
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
+  <body>
+    <div class="container ">
+      <%- include('navBar',{username : `${username}`}); -%>
+        <% if(typeof alert !='undefined' ) { %>
+          <% alert.forEach(function(error) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <%= error.msg %>
+            </div>
+            <% }) %>
+              <% } %>
+                <div class='d-flex justify-content-between'>
+                  <h1>Add New book</h1>
                 </div>
-                <div class="mb-3 mt-3">
-                  <label class='form-label' for="lname">Author :</label><br />
-                  <input class='form-control' id="author" type="text" name="author" required />
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
-                <div class="mb-3 mt-3">
-                  <label class='form-label' for="uname">Chapters:</label><br />
-                  <input class='form-control' id="chapters" type="number" name="chapters" required />
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
-                <div class="mb-3 mt-3">
-                  <label class='form-label' for="lname">Book Url :</label><br />
-                  <input class='form-control ' id="bookUrl" type="text" name="bookUrl" required />
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
+                <form action="/library/addbook" method="POST" class='post-form was-validated'
+                  enctype="multipart/form-data">
 
-                <div class="mb-3 mt-3">
-                  <label class='form-label' for="lname">Photo:</label><br />
-                  <input class='form-control' id="photo" type="file" name="photo" required />
-                  <div class="valid-feedback">Valid.</div>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
-                <label class='form-label' for="fname">Book Type :</label><br />
-                <select name="bookType" class="form-select">
-                  <% bookTypes.forEach((bookType)=> { %>
-                    <option value="<%= bookType.id %>">
-                      <%= bookType.type_name %>
-                    </option>
-                    <% }); %>
-                </select><br />
-                <div class="mb-3 mt-3">
-                  <label class='form-label' for="fname">Genres:</label><br />
-                  <% genres.forEach((genre)=> { %>
-                    <label>
-                      <%= genre.genres_name %>
-                    </label>
-                    <input type="checkbox" name="genre_id" value="<%= genre.id %>" />
-                    <% }); %>
-                </div>
+                  <div class="mb-3 mt-3">
+                    <label class='form-label' for="fname">Book Title :</label><br />
+                    <input class='form-control' id="bookTitle" type="text" name="bookTitle" required />
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <div class="mb-3 mt-3">
+                    <label class='form-label' for="lname">Author :</label><br />
+                    <input class='form-control' id="author" type="text" name="author" required />
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <div class="mb-3 mt-3">
+                    <label class='form-label' for="uname">Chapters:</label><br />
+                    <input class='form-control' id="chapters" type="number" name="chapters" required />
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <div class="mb-3 mt-3">
+                    <label class='form-label' for="lname">Book Url :</label><br />
+                    <input class='form-control ' id="bookUrl" type="text" name="bookUrl" required />
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
 
-                <label class='form-label' for="lname">Summary:</label><br />
-                <textarea class='form-control input' type="text" name="summary"></textarea><br>
+                  <div class="mb-3 mt-3">
+                    <label class='form-label' for="lname">Photo:</label><br />
+                    <input class='form-control' id="photo" type="file" name="photo" required />
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <label class='form-label' for="fname">Book Type :</label><br />
+                  <select name="bookType" class="form-select">
+                    <% bookTypes.forEach((bookType)=> { %>
+                      <option value="<%= bookType.id %>">
+                        <%= bookType.type_name %>
+                      </option>
+                      <% }); %>
+                  </select><br />
+                  <div class="mb-3 mt-3">
+                    <label class='form-label' for="fname">Genres:</label><br />
+                    <% genres.forEach((genre)=> { %>
+                      <label>
+                        <%= genre.genres_name %>
+                      </label>
+                      <input type="checkbox" name="genre_id" value="<%= genre.id %>" />
+                      <% }); %>
+                  </div>
+
+                  <label class='form-label' for="lname">Summary:</label><br />
+                  <textarea class='form-control input' type="text" name="summary"></textarea><br>
 
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <%- include('footer'); -%>

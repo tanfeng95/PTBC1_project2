@@ -1,3 +1,18 @@
+body {
+  background-color: #b1d0e0;
+}
+.card {
+  background-color: #fff9f9;
+}
+
+.book-body {
+  background-color: #ffefef;
+}
+.container {
+  background-color: #ffefef;
+  padding-bottom: 2vh;
+  border-radius: 10px;
+}
 .post-form {
   width: 60%;
   max-width: 330vw;
@@ -25,10 +40,6 @@
   font-size: 1rem;
   border-radius: 0.25rem;
   margin: 0.2rem;
-}
-
-body{
-  background-color: #C2CAD0;
 }
 
 .fixed-img {
@@ -72,6 +83,7 @@ body{
   border-radius: 0.25rem;
   max-width: 100%;
 }
+
 .card-text {
   font-size: 19px;
   text-overflow: ellipsis;
@@ -102,7 +114,7 @@ body{
   line-height: 1.5;
   color: #212529;
   text-align: center;
-  background-color: #fff;
+  margin-bottom: 10vh;
 }
 
 .form-signin {
@@ -130,5 +142,5 @@ body{
   line-height: 1.5;
   color: #212529;
   text-align: center;
-  background-color: #fff;
+  margin-bottom: 10vh;
 }

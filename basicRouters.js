@@ -7,25 +7,11 @@ import multer from 'multer';
 import paginate from 'paginate'
 import moment from 'moment';
 import { check, validationResult } from 'express-validator';
+import {pool} from './pgConnection.js';
 
 var router = express.Router();
 
-router.use(function timeLog (req, res, next) {
-  console.log('basic router: ', Date.now())
-  next()
-})
-
-const { Pool } = pg ;
-const pgConnectionConfigs = {
-  user: 'tanfeng95',
-  host: 'localhost',
-  database: 'books',
-  port: 5432, // Postgres server always runs on this port by default
-};
-
 const multerUpload = multer({ dest: 'images/' });
-const pool = new Pool(pgConnectionConfigs);
-
 router.use(express.urlencoded({ extended: false }));
 router.use(methodOverride('_method'));
 router.use(cookieParser());
