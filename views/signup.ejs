@@ -1,5 +1,8 @@
 <%- include('header', {title: `Sign up`}); -%>
+
   <body>
+
+
     <div class="container">
       <%- include('navBar',{username : `${username}`}); -%>
         <main class="form-signin">
@@ -17,11 +20,38 @@
                   placeholder="Password">
                 <label for="floatingPassword">Password</label>
               </div>
-              <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+              <button class="w-100 btn btn-lg btn-primary" type="submit" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Sign up</button>
               <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
             </div>
           </form>
         </main>
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Launch demo modal
+        </button> -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Sign Up Complete
+              </div>
+              <div class="modal-footer">
+                <a href="/login" class="btn btn-primary">Go to login Page</a>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 
     <%- include('footer'); -%>

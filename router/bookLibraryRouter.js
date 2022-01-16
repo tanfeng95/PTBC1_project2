@@ -6,11 +6,9 @@ import multer from 'multer';
 import paginate from 'paginate'
 import moment from 'moment';
 import { check, validationResult } from 'express-validator';
-import {pool} from './pgConnection.js';
+import {pool} from '../pgConnection.js';
 
-// import {router} from './basicRouters.js'
 var router = express.Router();
-
 
 const multerUpload = multer({ dest: 'images/' });
 const SALT = process.env['SALT'];
@@ -50,7 +48,7 @@ const userLibrary = (req,res)=>{
     res.render('userLibrary',resultArray)
   })
   .catch((error)=>{
-      const content = { content : error.message}
+      const content = { content : error.message, username : req.usersName}
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)
@@ -129,7 +127,7 @@ const getAddBook =(req,res)=>{
     res.render('addBookForm',result)
   })
   .catch((error)=>{
-      const content = { content : error.message}
+      const content = { content : error.message, username : req.usersName}
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)
@@ -234,7 +232,7 @@ const editBookStatus = (req,res) =>{
     res.render('editChapter',resultArray)
   })
   .catch((error)=>{
-        const content = { content : error.message}
+        const content = { content : error.message, username : req.usersName}
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)
@@ -258,7 +256,7 @@ const putBookStatus = (req,res)=>{
   .then((result)=>{
     res.redirect('/library')
   }).catch((error)=>{
-      const content = { content : error.message}
+      const content = { content : error.message, username : req.usersName}
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)
@@ -279,7 +277,7 @@ const deleteBookFromLibrary =(req,res)=>{
   .then((result)=>{
     res.redirect('/library')
   }).catch((error)=>{
-      const content = { content : error.stack}
+      const content = { content : error.stack , username : req.usersName}
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)
@@ -308,7 +306,7 @@ const postComments =(req,res)=>{
   .then((result)=>{
     res.redirect(`/book/${bookId}`)
   }).catch((error)=>{
-      const content = { content : error.message}
+      const content = { content : error.message, username : req.usersName}
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)

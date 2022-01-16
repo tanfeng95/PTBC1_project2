@@ -7,8 +7,8 @@ import multer from 'multer';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-import { router as indexRoute } from './basicRouters.js';
-import { router as libraryRoute } from './bookLibraryRouter.js';
+import { router as indexRoute } from './router/basicRouters.js';
+import { router as libraryRoute } from './router/bookLibraryRouter.js';
 
 
 const __filename = fileURLToPath(import.meta.url);

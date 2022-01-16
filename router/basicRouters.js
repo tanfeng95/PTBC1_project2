@@ -7,8 +7,7 @@ import multer from 'multer';
 import paginate from 'paginate'
 import moment from 'moment';
 import { check, validationResult } from 'express-validator';
-import {pool} from './pgConnection.js';
-// import {router} from './middlewareFunction.js'
+import {pool} from '../pgConnection.js';
 
 var router = express.Router();
 
@@ -91,7 +90,7 @@ const getIndexPage =(req,res)=>{
   }
     const whenDoneWithQuery = (error, result) => {
     if (error) {
-      const content = { content : error.message}
+      const content = { content : error.message, username : req.usersName}
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)
@@ -198,7 +197,7 @@ const postLogin = (req,res)=>{
       res.redirect('/')
    })
    .catch((error)=>{
-      const content = { content : error.message}
+      const content = { content : error.message , username : req.usersName}
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)
@@ -241,6 +240,10 @@ const getSignup =(req,res)=>{
  * @param {*} res 
  */
 const postSignup = (req,res)=>{
+// check if the username has been used 
+  const userdata = [req.body.username]
+  let checkUserQuery = 'select * from end_user where username = $1'
+
   // initialise the SHA object
   const shaObj = new jsSHA('SHA-512', 'TEXT', { encoding: 'UTF8' });
   // input the password from the request to the SHA object
@@ -249,12 +252,20 @@ const postSignup = (req,res)=>{
   const hashedPassword = shaObj.getHash('HEX');
   const inputData = [req.body.username,hashedPassword]
   const insertQuery = 'insert into end_user (username,user_password) values ($1,$2) '
-  pool.query(insertQuery,inputData)
+  pool
+  .query(checkUserQuery,userdata)
   .then((result)=>{
-    res.redirect('/login')
+      if(result.rows.length >= 1){
+        throw new Error('Unable to add username ,username have been used')
+      }else{
+        return pool.query(insertQuery,inputData)
+      }
+  })
+  .then((result)=>{
+    // res.redirect('/login')
   })
     .catch((error)=>{
-      const content = { content : error.message}
+      const content = { content : error.message,username : req.usersName }
       console.log(error.message)
       console.log(error.stack)
       res.render('error',content)
