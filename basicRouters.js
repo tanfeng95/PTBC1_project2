@@ -8,6 +8,7 @@ import paginate from 'paginate'
 import moment from 'moment';
 import { check, validationResult } from 'express-validator';
 import {pool} from './pgConnection.js';
+// import {router} from './middlewareFunction.js'
 
 var router = express.Router();
 
@@ -16,6 +17,8 @@ router.use(express.urlencoded({ extended: false }));
 router.use(methodOverride('_method'));
 router.use(cookieParser());
 router.use(express.static('images'));
+
+
 const SALT = process.env['SALT'];
 /**
  * Hashing string and changing into hex

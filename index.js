@@ -12,14 +12,14 @@ import { router as libraryRoute } from './bookLibraryRouter.js';
 
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const multerUpload = multer({ dest: 'images/' });
+// const __dirname = dirname(__filename);
+// const multerUpload = multer({ dest: 'images/' });
 
 const app = express();
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
-app.use(methodOverride('_method'));
-app.use(cookieParser());
+// app.use(methodOverride('_method'));
+// app.use(cookieParser());
 app.use(express.static('images'));
 app.use(express.static('static'));
 

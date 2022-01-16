@@ -7,6 +7,8 @@ import paginate from 'paginate'
 import moment from 'moment';
 import { check, validationResult } from 'express-validator';
 import {pool} from './pgConnection.js';
+
+// import {router} from './basicRouters.js'
 var router = express.Router();
 
 
@@ -36,6 +38,7 @@ const userLibrary = (req,res)=>{
           join book
           on book.id = book_user.book_id
           where end_user_id = ${req.user.id}`
+          
   pool
   .query(userLibQuery) 
   .then((result)=>{
