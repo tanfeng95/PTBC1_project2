@@ -10,6 +10,7 @@ import { dirname } from 'path';
 import { router as indexRoute } from './router/basicRouters.js';
 import { router as libraryRoute } from './router/bookLibraryRouter.js';
 
+const PORT = process.env.PORT || 3004;
 
 const __filename = fileURLToPath(import.meta.url);
 // const __dirname = dirname(__filename);
@@ -26,4 +27,4 @@ app.use(express.static('static'));
 app.use('/',indexRoute)
 app.use('/library',libraryRoute)
 
-app.listen(3004)
+app.listen(PORT)
